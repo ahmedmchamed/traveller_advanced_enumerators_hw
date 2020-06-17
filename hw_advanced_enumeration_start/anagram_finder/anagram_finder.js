@@ -22,7 +22,9 @@ AnagramFinder.prototype.findAnagrams = function (otherWords) {
     // }
 
     if (this.checkIfIdenticalWord(otherWords)) {
-        return [];
+        return otherWords.filter((anagram) => {
+            return false;
+        })
     }
 
     return otherWords.filter((anagram) => {
