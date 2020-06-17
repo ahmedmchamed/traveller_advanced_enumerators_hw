@@ -24,9 +24,21 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
   }, 0)
 };
 
+Traveller.prototype.duplicates = function () {
+  return this.map((element, index, array) => {
+    if (!array[index]) {
+      return element;
+    }
+  })
+}
+
 Traveller.prototype.getUniqueModesOfTransport = function () {
-  return this.journeys.filter((journey, index, journeys) => {
-    return journeys.indexOf(journey) === index
+  const arrayOfJourneys = this.journeys.map((journey) => {
+    return journey.transport
+  })
+
+  return arrayOfJourneys.filter((transportMode, index, array) => {
+    return array.indexOf(transportMode) === index
   })
 };
 
